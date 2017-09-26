@@ -1,4 +1,3 @@
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -36,7 +35,9 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-" filetype plugin on
+filetype plugin on
+
+syntax enable
 
 " IMPORTANT: win32 users will need to have 'shellslash' set so that latex
 " can be called correctly.
@@ -46,9 +47,6 @@ set shellslash
 " search in a singe file. This will confuse Latex-Suite. Set your grep
 " program to always generate a file-name.
 set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: This enables automatic indentation as you type.
-" filetype indent on
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
@@ -63,27 +61,17 @@ let g:Tex_SmartKeyDot=0
 
 
 let g:Tex_Env_figure="\\begin{figure}[<+htpb+>]\<cr>\\centering\<cr>\\includegraphics{<+file+>}\<cr>\\caption{<+caption text+>}\<cr>\\label{fig:<+label+>}\<cr>\\end{figure}<++>"
+let g:Tex_GotoError=0
 
 set backspace=indent,eol,start
 
-
-colorscheme gruvbox
-set background=dark    " Setting dark mode
-
-let g:Tex_GotoError=0
-
- imap <C-g> <Plug>IMAP_JumpForward
- nmap <C-g> <Plug>IMAP_JumpForward
-" imap <C-space> <Plug>IMAP_JumpForward
-" nmap <C-space> <Plug>IMAP_JumpForward
-" vmap <C-space> <Plug>IMAP_JumpForward
+imap <C-g> <Plug>IMAP_JumpForward
+nmap <C-g> <Plug>IMAP_JumpForward
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
-" set modeline
 
 set splitright
 set splitbelow
@@ -91,12 +79,6 @@ set splitbelow
 set spelllang=en_us spell
 
 set lines=100
-
-" au VimEnter * split
-" au VimEnter * vsplit
-" au VimEnter * wincmd k 
-" au VimEnter * wincmd =
-
 
 let g:Tex_IgnoredWarnings = 
     \'Underfull'."\n".
@@ -124,15 +106,20 @@ set expandtab
 set number
 set cul
 set cc=80
-"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-"match OverLength /\%81v.\+/
 
 
 " Airline setup
-let g:airline_theme='powerlineish'
+let g:airline_theme='solarized'
+let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts=1
 
+colorscheme gruvbox
+set background=dark    " Setting dark mode
 
-"if $COLORTERM == 'gnome-terminal'
-  "set t_Co=256
-"endif
+if has('gui_running')
+  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
+endif
+
+if $COLORTERM == 'gnome-terminal'
+  set t_Co=256
+endif
