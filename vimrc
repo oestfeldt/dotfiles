@@ -1,4 +1,4 @@
-set nocompatible              " be iMproved, required
+  set nocompatible              " be iMproved, required
 filetype off                  " required
 
 let $PYTHONHOME="/home/christoffer/anaconda3/bin/python/"
@@ -34,7 +34,7 @@ set splitbelow
 
 set spelllang=en_us spell
 
-set lines=100
+" set lines=100
 
 set list listchars=tab:»·,trail:·,nbsp:·
 set nojoinspaces

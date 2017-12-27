@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+export PATH="/home/christoffer/anaconda3/bin:$PATH"
+
 # Path to your oh-my-zsh installation.
   export ZSH=/home/christoffer/.oh-my-zsh
 
@@ -51,7 +53,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode cp z history-substring-search)
+plugins=(git cp z history-substring-search h zsh-autosuggestions zsh-dircolors-solarized) #vi-mode 
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,3 +88,11 @@ source $ZSH/oh-my-zsh.sh
 
 # DEFAULT_USER="christoffer"
 prompt_context() {}
+
+bindkey "{terminfo[khome]}" beginning-of-line
+bindkey "{terminfo[kend]}" end-of-line
+#
+# eval 'dircolors /home/christoffer/.dir_colors/dircolors'
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg4'
+bindkey '^ ' autosuggest-accept
