@@ -48,6 +48,8 @@ set ts=2
 set sw=2
 set expandtab
 
+set linebreak "Wordwrapping
+
 set number
 set cul
 set cc=80
@@ -83,6 +85,7 @@ let g:Tex_MultipleCompileFormats='pdf, aux'
 let g:Tex_SmartKeyDot=0
 
 let g:Tex_GotoError=0
+let g:Tex_ShowErrorContext=0
 
 imap <C-g> <Plug>IMAP_JumpForward
 nmap <C-g> <Plug>IMAP_JumpForward
@@ -124,3 +127,6 @@ if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
 
+nnoremap gq :ccl<cr>
+
+imap <leader>it <Plug>Tex_InsertItemOnNextLine
