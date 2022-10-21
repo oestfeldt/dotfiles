@@ -1,7 +1,7 @@
-  set nocompatible              " be iMproved, required
+set nocompatible              " be iMproved, required
 filetype off                  " required
 
-let $PYTHONHOME="/home/christoffer/anaconda3/bin/python/"
+"let $PYTHONHOME="/home/christoffer/anaconda3/bin/python/"
 
 " Plugins
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -79,9 +79,11 @@ set foldcolumn=4
 set grepprg=grep\ -nH\ $* " Latex-Suite grep fix
 
 let g:tex_flavor='latex' " Latex-Suite file type fix
+let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 -interaction=nonstopmode -shell-escape -file-line-error-style "$*"'
 
 let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_MultipleCompileFormats='pdf, aux'
+let g:Tex_MultipleCompileFormats='pdf,bibtex,aux,pdf'
+let g:Tex_BibtexFlavor = 'biber'
 let g:Tex_SmartKeyDot=0
 
 let g:Tex_GotoError=0
@@ -98,13 +100,16 @@ let g:Tex_IgnoredWarnings =
     \'Missing number, treated as zero.'."\n".
     \'There were undefined references'."\n".
     \'Citation %.%# undefined'."\n".
-    \'Marginpar on page'."\n" " %n moved by %.%pt.
-let g:Tex_IgnoreLevel = 8
+    \'Marginpar on page'."\n".
+    \'Package beamerthememetro'."\n".
+    \'Command \\InputIfFileExists'."\n"
+let g:Tex_IgnoreLevel = 12
 
+let g:Tex_FoldedSections = 'part,chapter,section,subsection,subsubsection'
 let g:Tex_FoldedEnvironments = 'verbatim,comment,eq,gather, align,figure,table,thebibliography, keywords,abstract,titlepage,frame'
 let g:Tex_FoldedCommands = 'mymarginfig'
 
-let g:Tex_Env_figure="\\begin{figure}[<+htpb+>]\<cr>\\centering\<cr>\\includegraphics{<+file+>}\<cr>\\caption{<+caption text+>}\<cr>\\label{fig:<+label+>}\<cr>\\end{figure}<++>"
+let g:Tex_Env_figure="\\begin{figure}[<+htpb+>]\<cr>\\centering\<cr>\\includegraphics[<++>]{<+file+>}\<cr>\\caption{<+caption text+>}\<cr>\\label{fig:<+label+>}\<cr>\\end{figure}<++>"
 let g:Tex_Env_frame = "\\begin{frame}{<++>}\<CR><++>\<CR>\\end{frame}"
 let g:Tex_Env_columns = "\\begin{columns}\<CR>\\begin{column}{.5\\textwidth}\<CR><++>\<CR>\\end{column}\<CR>\\begin{column}{.5\\textwidth}\<CR><++>\<CR>\\end{column}\<CR>\\end{columns}"
 let g:Tex_Env_insg = "\\includegraphics[]{<++>}"
@@ -116,6 +121,7 @@ let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts=1
 
+let g:gruvbox_italic=1
 colorscheme gruvbox
 set background=dark    " Setting dark mode
 
@@ -123,10 +129,18 @@ if has('gui_running')
   set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
 endif
 
-if $COLORTERM == 'gnome-terminal'
-  set t_Co=256
-endif
+"if $COLORTERM == 'gnome-terminal'
+  "set t_Co=256
+"endif
+set termguicolors
 
 nnoremap gq :ccl<cr>
 
 imap <leader>it <Plug>Tex_InsertItemOnNextLine
+
+
+
+noremap <silent> k gk
+noremap <silent> j gj
+noremap <silent> 0 g0
+noremap <silent> $ g$

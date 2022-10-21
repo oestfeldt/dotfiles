@@ -4,7 +4,7 @@
 export PATH="/home/christoffer/anaconda3/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/christoffer/.oh-my-zsh
+export ZSH=/home/christoffer/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -53,7 +53,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git cp z history-substring-search h zsh-autosuggestions zsh-dircolors-solarized) #vi-mode 
+plugins=(git cp z history-substring-search zsh-autosuggestions zsh-dircolors-solarized) #vi-mode h
 
 source $ZSH/oh-my-zsh.sh
 
@@ -96,3 +96,7 @@ bindkey "{terminfo[kend]}" end-of-line
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg4'
 bindkey '^ ' autosuggest-accept
+
+
+
+eval `dircolors /home/christoffer/.dir_colors/`
